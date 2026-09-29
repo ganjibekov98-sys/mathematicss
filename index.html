@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <title>Изучении математики</title>
+        <style>
+            html, body {
+                width: 100%;
+            }
+            body {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding: 10px;
+                background-color: pink;
+            }
+            .intro {
+                background-color: #f4f4f4;
+                border-radius: 5px;
+                padding: 10px;
+                color: black;
+                font-weight: bold;
+                font-size: 18px;
+                max-width: 350px;
+                margin: 20px;
+            }
+            .lessoncontainer {
+                width: 720px;
+                border-radius: 8px;
+                background-color: pink;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding: 10px;
+                
+            }
+            .header {
+                padding-left: 25px;
+                padding-right: 25px;
+                padding-bottom: 20px;
+                padding-top: 20px;
+                background-color: red;
+                font-size: 20px;
+                border-radius: 8px;
+                color: white;
+            
+            }
+            .expln {
+                width: 90%;
+                padding: 10px;
+                background-color: lightgreen;
+                border-radius: 5px;
+                color: black;
+                
+                font-size: 22px;
+                margin: 25px;
+            }
+            .deep {
+                width: 90%;
+                padding: 10px;
+                background-color: violet;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+            }
+            .div {
+                margin: 40px;
+                display: grid;
+                grid-template-columns: 40px 40px 40px;
+                grid-template-rows: 40px 40px;
+                gap: 10px;
+                padding: 10px;
+                border: 3px solid green;
+            }
+            .est {
+                padding: 10px;
+                background-color: crimson;
+                font-size: 20px;
+                color: white;
+                border-radius: 5px;
+                border: 3px solid crimson;
+                transition: 0.5s ease;
+            }
+            .est:hover {
+                cursor: pointer;
+                transform: scale(1.05);
+            }
+            .count {
+                background-color: red;
+                border-radius: 5px;
+                
+            }
+            .explanation {
+                padding: 10px;
+                background-color: white;
+                font-size: 20px;
+                color: green;
+                border-radius: 5px;            
+            }
+            .estnew {
+                padding: 10px;
+                background-color: #ffffff;
+                border-radius: 5px;
+                margin: 15px;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+            }
+            .pointer {
+                font-size: 34px;
+                color: white;
+
+            }
+            .inp {
+                padding: 10px;
+                border-radius: 5px;
+                width: 150px;
+                border: 3px solid yellow;
+                margin: 10px;
+            }
+            
+        </style>
+    </head>
+    <body>
+        <div class="intro">Добро пожаловать на наш сайт! 🎓
+Здесь мы изучаем математику не через зубрёжку, а через понимание. Учимся разбираться, а не просто запоминать. 🧠</div>
+    <div class="lessoncontainer">
+        <div class="expln">Что такое умножение?
+
+Умножение — это не просто способ быстро складывать числа. Это способ объединить одинаковые группы.
+
+Например:
+
+3 × 4 означает, что у нас есть 3 группы по 4:
+
+4 + 4 + 4 = 12
+
+Поэтому:
+
+3 × 4 = 12
+
+Но умножение можно понять ещё глубже. Оно показывает, сколько всего получится, если взять одинаковое количество несколько раз.
+
+Например, если в одной коробке 6 карандашей, а коробок 5:
+
+5 × 6 = 30
+
+
+Мы не просто запоминаем, что 5 × 6 = 30. Мы понимаем, почему получается 30.</div>
+        <div class="deep">                       
+            <div class="div">
+                <div class="count"></div>
+                <div class="count"></div>
+                <div class="count"></div>
+                <div class="count"></div>
+                <div class="count"></div>
+                <div class="count"></div>                
+            </div>
+            <div class="explanation">Ребята, в школе мы всегда зубрили, что 3 × 2 = 6. Это так, но на таких сайтах, как этот, мы можем понять глубину и красоту математики.
+
+Возникает вопрос: почему 3 × 2 равно 6?
+
+Ответ: посмотрите на эти квадратики. Их 3 слева направо (по горизонтали) и 2 сверху вниз (по вертикали). Теперь посчитайте, сколько их всего.
+
+6, верно? Это и является доказательством того, что 3 × 2 = 6.
+
+Оцените этот сайт, и тогда вы сможете изучать такие науки на подобных сайтах!
+            </div>   
+            <div class="estnew">
+                <input class="inp" placeholder="Оцените от 1 до 10" id="theinp">
+                <button class="est" onclick="Send()">Оценить</button>
+            </div>        
+        </div>
+        <script src="/socket.io/socket.io.js"></script>
+        <script>
+            const socket = io()
+            function Send() {
+                let thetext = document.getElementById("theinp").value
+                socket.emit("add", thetext)
+            }            
+        </script>    
+    </body>
+</html>
